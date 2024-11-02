@@ -6,6 +6,7 @@
     - [Provided Sample Scenario - Smart Trailer](#provided-sample-scenario---smart-trailer)
     - [Other Sample Scenarios](#other-sample-scenarios)
 - [Useful References for Creating and Enhancing Sample Scenarios](#useful-references-for-creating-and-enhancing-sample-scenarios)
+    - [Global Orchestrator](#global-orchestrator)
     - [In-Vehicle Stack](#in-vehicle-stack)
     - [General](#general)
     - [Eclipse Ankaios](#eclipse-ankaios)
@@ -43,7 +44,7 @@ Enjoy the process of bringing your vision to life!
 
 Here is a list of potential scenarios your team could develop. Feel free to invent your own scenarios too. Let your creativity shine ☀️ and have fun!
 
-### Provided Sample Scenario - Truck Fleet
+### Provided Sample Scenario - Truck Fleet 🚚🚛🚚🚛🚚
 
 ### Truck Fleed Scenario Overview
 
@@ -120,6 +121,10 @@ Here are a few suggested ways to extend this use case, but feel free to use your
 
 This section offers guidance for creating a new sample scenario or extending the [Provided Sample Scenario](#provided-sample-scenario). While it does not provide a comprehensive list of resources, it aims to steer you in the right direction. If this section does not provide the guidance you need, please refer to the respective project’s documentation. See [Projects Involved](#projects-involved) for the project links.
 
+### Global Orchestrator
+Here is a list of references on how to extend Symphony:
+* Write a custom target provider (for configuration/payload management)
+* Write a custom stage provider (for workflow)
 ### In-Vehicle Stack
 If you are using the [In-Vehicle Stack](./in-vehicle-stack/README.md), these references may be useful.
 
