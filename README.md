@@ -2,9 +2,11 @@
 # Maestro Challenge 🚗💻🎶
 - [About](#about)
 - [Sample Scenarios](#sample-scenarios)
-    - [Provided Sample Scenario](#provided-sample-scenario)
+    - [Provided Sample Scenario - Truck Fleet](#provided-sample-scenario---truck-fleet)
+    - [Provided Sample Scenario - Smart Trailer](#provided-sample-scenario---smart-trailer)
     - [Other Sample Scenarios](#other-sample-scenarios)
 - [Useful References for Creating and Enhancing Sample Scenarios](#useful-references-for-creating-and-enhancing-sample-scenarios)
+    - [Global Orchestrator](#global-orchestrator)
     - [In-Vehicle Stack](#in-vehicle-stack)
     - [General](#general)
     - [Eclipse Ankaios](#eclipse-ankaios)
@@ -31,17 +33,45 @@ Imagine yourself as the **maestro**. You are not just writing code. You are comp
 
 ## About
 
-We supply an in-vehicle stack with software orchestrators. Your assignment is to utilize our in-vehicle stack and software orchestrators to construct your own scenario or replicate the scenarios provided in our [Sample Scenarios](#sample-scenarios).
+We supply both a global orchestrator and an in-vehicle stack with in-vehicle software orchestrators. Your assignment is to utilize our global orchestrator and the in-vehicle stack to construct your own scenario or replicate the scenarios provided in our [Sample Scenarios](#sample-scenarios).
 
-The tech stack in this challenge showcases complex in-vehicle services and workloads, utilizing the vehicle’s computing resources and capabilities, as well as other in-vehicle applications.
+The tech stack in this challenge showcases complex in-vehicle services and workloads, utilizing the vehicle’s computing resources and capabilities, as well as other in-vehicle applications. Furthermore, it demonstrates how a fleet of vehicles can be managed with consistent, end-to-end workflows. 
 
 Enjoy the process of bringing your vision to life!
+
 
 ## Sample Scenarios
 
 Here is a list of potential scenarios your team could develop. Feel free to invent your own scenarios too. Let your creativity shine ☀️ and have fun!
 
-### Provided Sample Scenario
+### Provided Sample Scenario - Truck Fleet 🚚🚛🚚🚛🚚
+
+### Truck Fleed Scenario Overview
+
+The fleet management system allows each truck to report its cargo state at designated site offices, where it can receive new shipment tasks based on logistical needs. This system also downloads an optimized route plan to the truck, which is customized according to cargo requirements, regulatory restrictions, and driver schedules. For example, a cold chain truck might have its internal temperature adjusted automatically based on the new shipment’s needs, while the route plan ensures timely deliveries by factoring in real-time traffic, weather, and road conditions. This dynamic configuration and route planning maximize fleet efficiency, allowing for safe, compliant, and cost-effective transport of sensitive or high-priority cargo.
+
+#### Automated docking workflow
+
+When a park pulls off at a site, an automated workflow is triggered to:
+1.	**Register** the truck with the site.
+2.	**Cargo State Reporting:** Trucks with IoT sensors and telematics can automatically report cargo conditions (temperature, humidity, weight, etc.) when they stop at the designated site. This helps in tracking cargo quality and condition, ensuring compliance with regulatory requirements, and preventing spoilage or damage.
+3.	**Dynamic Task Assignment:** Upon reporting, the truck may receive new shipment tasks based on logistics demands or updated customer requirements. This enhances fleet utilization and helps maintain timely deliveries.
+4.	**Configuration Updates:** For specialized trucks (e.g., refrigerated or hazardous material trucks), dynamic adjustments to their configuration, such as setting new temperature ranges or other parameters, can be necessary to align with new cargo requirements. This capability supports effective cold chain management, adapting to different cargo needs without requiring the driver to make manual adjustments.
+
+#### Simulated Field Office
+The simulated field office provides a fleet orchestrator based on [Eclipse Symphony](https://github.com/eclipse-symphony/symphony) as well as a web portal. It also creates a MQTT broker through which your simulated trucks use to connect to the field office.  
+
+#### Simulated Truck
+
+The simulated truck is a Docker container that you can extend in several ways:
+* Add custom logic to apply new configurations and software updates to your in-vehicle software stack. For example, you can implement custom logic to interact with an in-vehicle orchestrator, such as [Eclipse Ankaios](./eclipse-ankaios/README.md) and [Eclipse BlueChi](./eclipse-bluechi/README.md), to apply these updates.
+* Add custom logic to handle stages in the automated docking workflow. This could be as simple as printing a message to the console or connecting to actual sensors and devices to read or set settings.
+
+#### Run the use case
+
+Please refer to [Eclipse Symphony's repo](https://github.com/eclipse-symphony/symphony/tree/main/docs) for instructions on running this scenario.
+
+### Provided Sample Scenario - Smart Trailer
 
 #### Smart Trailer Scenario Overview
 The system detects that a smart trailer is being connected to the vehicle. A signal is raised to the orchestrator to start up the necessary providers and applications to manage the smart trailer. These include a Digital Twin Provider, which exposes signals from the trailer to higher-level applications, and a Smart Trailer application, which consumes these signals. The provided smart trailer application prints the value of a property it subscribes to, the `TrailerWeight`.
@@ -91,6 +121,10 @@ Here are a few suggested ways to extend this use case, but feel free to use your
 
 This section offers guidance for creating a new sample scenario or extending the [Provided Sample Scenario](#provided-sample-scenario). While it does not provide a comprehensive list of resources, it aims to steer you in the right direction. If this section does not provide the guidance you need, please refer to the respective project’s documentation. See [Projects Involved](#projects-involved) for the project links.
 
+### Global Orchestrator
+Here is a list of references on how to extend Symphony:
+* Write a custom target provider (for configuration/payload management)
+* Write a custom stage provider (for workflow)
 ### In-Vehicle Stack
 If you are using the [In-Vehicle Stack](./in-vehicle-stack/README.md), these references may be useful.
 
